@@ -1,0 +1,736 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+}
+
+/* 全局猫爪装饰类 */
+.cat-paw {
+    position: relative;
+}
+
+.cat-paw::before {
+    content: "🐾";
+    position: absolute;
+    font-size: 16px;
+    color: var(--primary-color);
+    opacity: 0.8;
+}
+
+/* 可爱的小猫装饰元素 */
+.cat-decoration {
+    position: fixed;
+    font-size: 24px;
+    z-index: -1;
+    opacity: 0.4;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+/* 页面背景 */
+body {
+    --primary-color: #ff4757;
+    --secondary-color: #ff7675;
+    --bg-color: #fcf4f4;
+    --text-color: #333;
+    --border-color: #ffb3b3;
+    --shadow-color: rgba(255, 71, 87, 0.2);
+    --record-border: #ff4757;
+    --recent-bg: #fff5f5;
+    --recent-border: #ffdddd;
+    
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    min-height: 100vh;
+    padding: 20px;
+    animation: gradientAnimation 15s ease infinite;
+    background-size: 400% 400%;
+    color: var(--text-color);
+    transition: background 0.3s ease;
+}
+
+/* 樱花粉主题（默认） */
+body.pink {
+    --primary-color: #ff4757;
+    --secondary-color: #ff7675;
+    --bg-color: #fcf4f4;
+    --text-color: #333;
+    --border-color: #ffb3b3;
+    --shadow-color: rgba(255, 71, 87, 0.2);
+    --record-border: #ff4757;
+    --recent-bg: #fff5f5;
+    --recent-border: #ffdddd;
+    
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+/* 柠檬黄主题 */
+body.yellow {
+    --primary-color: #ffa502;
+    --secondary-color: #ffba52;
+    --bg-color: #fff9eb;
+    --text-color: #333;
+    --border-color: #ffda9e;
+    --shadow-color: rgba(255, 165, 2, 0.2);
+    --record-border: #ffa502;
+    --recent-bg: #fff9eb;
+    --recent-border: #ffda9e;
+    
+    background: linear-gradient(135deg, #fff38a 0%, #ffe066 100%);
+}
+
+/* 薄荷绿主题 */
+body.green {
+    --primary-color: #2ed573;
+    --secondary-color: #54ee9e;
+    --bg-color: #f0fef4;
+    --text-color: #333;
+    --border-color: #98fb98;
+    --shadow-color: rgba(46, 213, 115, 0.2);
+    --record-border: #2ed573;
+    --recent-bg: #f0fef4;
+    --recent-border: #98fb98;
+    
+    background: linear-gradient(135deg, #b5ead7 0%, #8fd3f4 100%);
+}
+
+/* 晴日蓝主题 */
+body.blue {
+    --primary-color: #1e90ff;
+    --secondary-color: #5cafff;
+    --bg-color: #f0f7ff;
+    --text-color: #333;
+    --border-color: #95c9ff;
+    --shadow-color: rgba(30, 144, 255, 0.2);
+    --record-border: #1e90ff;
+    --recent-bg: #f0f7ff;
+    --recent-border: #95c9ff;
+    
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 添加装饰性小猫元素 */
+.decoration-1 {
+    top: 10%;
+    left: 5%;
+    transform: rotate(15deg);
+    animation-delay: 0s;
+}
+
+.decoration-2 {
+    top: 20%;
+    right: 8%;
+    transform: rotate(-10deg);
+    animation-delay: 2s;
+}
+
+.decoration-3 {
+    bottom: 15%;
+    left: 10%;
+    transform: rotate(5deg);
+    animation-delay: 1s;
+}
+
+.decoration-4 {
+    bottom: 25%;
+    right: 12%;
+    transform: rotate(-5deg);
+    animation-delay: 3s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 顶部控制区域 */
+.top-controls {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.top-controls button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.top-controls button:hover::after {
+    content: "🐾";
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-size: 16px;
+    animation: bounce 0.5s ease;
+}
+
+.top-controls button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.top-controls select {
+    background: white;
+    border: 2px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-controls select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--shadow-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: "🐟";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 120px;
+    opacity: 0.05;
+    transform: rotate(15deg);
+}
+
+/* 标题样式 */
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px var(--shadow-color);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h1::before,
+h1::after {
+    content: "🐱";
+    font-size: 0.8em;
+    color: var(--primary-color);
+    opacity: 0.8;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+h1::before {
+    left: -40px;
+}
+
+h1::after {
+    right: -40px;
+}
+
+/* 内容包装器 */
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+/* 左侧日历区域 */
+.calendar-section {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 日历样式 */
+.calendar {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 2px solid #e8e8e8;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: var(--bg-color);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-color);
+}
+
+.calendar-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.calendar-nav:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.calendar-title {
+    font-size: 1.3em;
+    color: #2d3436;
+    font-weight: bold;
+}
+
+/* 星期栏 */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.weekday {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    color: #636e72;
+    font-size: 14px;
+}
+
+/* 日历日期 */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.calendar-day:hover {
+    background-color: #e3f2fd;
+    transform: scale(1.05);
+}
+
+.calendar-day.other-month {
+    color: #b2bec3;
+    background-color: #f1f2f6;
+}
+
+.calendar-day.current-day {
+    background-color: #0984e3;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.selected {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    border-color: var(--secondary-color);
+}
+
+.calendar-day.has-records {
+    background-color: var(--bg-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.calendar-day.has-records.selected {
+    background-color: #e84393;
+}
+
+/* 事件指示器 */
+.event-dot {
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #ff6b81;
+}
+
+/* 返回按钮 */
+.back-button {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* 返回主页面按钮样式 */
+.back-btn {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加猫爪装饰效果 */
+.back-btn::before {
+    content: "🐾";
+    position: absolute;
+    left: -30px;
+    transition: left 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.back-btn:hover::before {
+    left: 10px;
+}
+
+.back-button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* 右侧记录区域 */
+.records-section {
+    flex: 1;
+    background: var(--recent-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border-left: 5px solid var(--primary-color);
+    border: 2px solid var(--recent-border);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 记录头部 */
+.records-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f1f2f6;
+}
+
+.records-header h2 {
+    color: #2d3436;
+    font-size: 1.8em;
+}
+
+.filter-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#date-filter {
+    font-size: 16px;
+    color: #6c5ce7;
+    font-weight: bold;
+    padding: 8px 16px;
+    background-color: #f0e6ff;
+    border-radius: 20px;
+}
+
+.clear-filter {
+    padding: 8px 16px;
+    background-color: #ff7675;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.clear-filter:hover {
+    background-color: #d63031;
+}
+
+/* 记录列表 */
+.records-list {
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 300px);
+}
+
+.record-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 为每个记录项添加主题色边框装饰 */
+.record-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--record-border);
+}
+
+.record-item:hover {
+    box-shadow: 0 8px 20px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+.record-time {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.record-content {
+    color: #2d3436;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.record-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.record-img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    transition: transform 0.3s ease;
+}
+
+.record-img:hover {
+    transform: scale(1.05);
+}
+
+/* 记录操作按钮 */
+.record-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f1f2f6;
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.delete-btn {
+    background-color: #ff7675;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d63031;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 118, 117, 0.3);
+}
+
+/* 无记录状态 */
+.no-records {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-style: italic;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border: 2px dashed #dfe6e9;
+    text-align: center;
+    padding: 40px;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 响应式设计 */
+@media (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .calendar-section {
+        flex: none;
+    }
+    
+    .calendar {
+        max-width: none;
+    }
+    
+    .records-list {
+        max-height: 500px;
+    }
+    
+    .top-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .top-controls button,
+    .top-controls select {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .top-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .top-controls button,
+    .top-controls select {
+        width: 100%;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .records-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .record-img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+    
+    .record-item {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,552 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+}
+
+/* 全局猫爪装饰类 */
+.cat-paw {
+    position: relative;
+}
+
+.cat-paw::before {
+    content: "🐾";
+    position: absolute;
+    font-size: 16px;
+    color: var(--primary-color);
+    opacity: 0.8;
+}
+
+/* 可爱的小猫装饰元素 */
+.cat-decoration {
+    position: fixed;
+    font-size: 24px;
+    z-index: -1;
+    opacity: 0.4;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+/* 页面背景和动画 */
+body {
+    --primary-color: #ff4757;
+    --secondary-color: #ff7675;
+    --bg-color: #fcf4f4;
+    --text-color: #333;
+    --border-color: #ffb3b3;
+    --shadow-color: rgba(255, 71, 87, 0.2);
+    --record-border: #ff4757;
+    --recent-bg: #fff5f5;
+    --recent-border: #ffdddd;
+    
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    min-height: 100vh;
+    padding: 20px;
+    animation: gradientAnimation 15s ease infinite;
+    background-size: 400% 400%;
+    color: var(--text-color);
+    transition: background 0.3s ease;
+}
+
+/* 樱花粉主题（默认） */
+
+/* 柠檬黄主题 */
+body.yellow {
+    --primary-color: #ffa502;
+    --secondary-color: #ffba52;
+    --bg-color: #fff9eb;
+    --text-color: #333;
+    --border-color: #ffda9e;
+    --shadow-color: rgba(255, 165, 2, 0.2);
+    --record-border: #ffa502;
+    --recent-bg: #fff9eb;
+    --recent-border: #ffda9e;
+    
+    background: linear-gradient(135deg, #fff38a 0%, #ffe066 100%);
+}
+
+/* 薄荷绿主题 */
+body.green {
+    --primary-color: #2ed573;
+    --secondary-color: #54ee9e;
+    --bg-color: #f0fef4;
+    --text-color: #333;
+    --border-color: #98fb98;
+    --shadow-color: rgba(46, 213, 115, 0.2);
+    --record-border: #2ed573;
+    --recent-bg: #f0fef4;
+    --recent-border: #98fb98;
+    
+    background: linear-gradient(135deg, #b5ead7 0%, #8fd3f4 100%);
+}
+
+/* 晴日蓝主题 */
+body.blue {
+    --primary-color: #1e90ff;
+    --secondary-color: #5cafff;
+    --bg-color: #f0f7ff;
+    --text-color: #333;
+    --border-color: #95c9ff;
+    --shadow-color: rgba(30, 144, 255, 0.2);
+    --record-border: #1e90ff;
+    --recent-bg: #f0f7ff;
+    --recent-border: #95c9ff;
+    
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 顶部控制区域 */
+.top-controls {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.top-controls button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.top-controls button:hover::after {
+    content: "🐾";
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    font-size: 16px;
+    animation: bounce 0.5s ease;
+}
+
+.top-controls button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.top-controls select {
+    background: white;
+    border: 2px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-controls select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--shadow-color);
+}
+
+/* 主容器 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: "🐟";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 120px;
+    opacity: 0.05;
+    transform: rotate(15deg);
+}
+
+/* 标题样式 */
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px var(--shadow-color);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h1::before,
+h1::after {
+    content: "🐱";
+    font-size: 0.8em;
+    color: var(--primary-color);
+    opacity: 0.8;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+h1::before {
+    left: -40px;
+}
+
+h1::after {
+    right: -40px;
+}
+
+/* 记录容器 */
+.record-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 输入区域 */
+.input-section {
+    background-color: var(--recent-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid var(--recent-border);
+}
+
+.input-section label {
+    display: block;
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#record-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+#record-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px var(--shadow-color);
+}
+
+/* 图片上传区域 */
+.image-upload {
+    margin: 15px 0;
+}
+
+.image-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.image-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.image-preview {
+    margin-top: 15px;
+    min-height: 100px;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-image {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 6px;
+    position: relative;
+    border: 2px solid var(--border-color);
+}
+
+.remove-image {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* 按钮组 */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.primary-btn, .secondary-btn {
+    flex: 1;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn::after {
+    content: "🐟";
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    transition: right 0.3s ease;
+}
+
+.primary-btn:hover::after {
+    right: 10px;
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.secondary-btn::after {
+    content: "🐾";
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    transition: right 0.3s ease;
+}
+
+.secondary-btn:hover::after {
+    right: 10px;
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* 最近记录区域 */
+.recent-records {
+    background-color: var(--recent-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid var(--recent-border);
+    transition: all 0.5s ease;
+}
+
+.recent-records h3 {
+    color: #2f3542;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.recent-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.recent-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--record-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.recent-item::before {
+    content: "🐱";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    opacity: 0.2;
+}
+
+.recent-item:hover::before {
+    animation: wave 1s ease infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+/* 添加装饰性小猫元素 */
+.decoration-1 {
+    top: 10%;
+    left: 5%;
+    transform: rotate(15deg);
+    animation-delay: 0s;
+}
+
+.decoration-2 {
+    top: 20%;
+    right: 8%;
+    transform: rotate(-10deg);
+    animation-delay: 2s;
+}
+
+.decoration-3 {
+    bottom: 15%;
+    left: 10%;
+    transform: rotate(5deg);
+    animation-delay: 1s;
+}
+
+.decoration-4 {
+    bottom: 25%;
+    right: 12%;
+    transform: rotate(-5deg);
+    animation-delay: 3s;
+}
+
+/* 隐秘的作者水印 */
+.hidden-cat {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 16px;
+    opacity: 0.3;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.hidden-cat:hover {
+    opacity: 0.8;
+    transform: scale(1.2);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.recent-text {
+    margin-bottom: 10px;
+    color: #2f3542;
+    line-height: 1.5;
+}
+
+.recent-time {
+    font-size: 12px;
+    color: #747d8c;
+}
+
+.recent-images {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.recent-img {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 4px;
+}
+
+/* 空状态提示 */
+.empty-state {
+    text-align: center;
+    color: #747d8c;
+    padding: 40px 0;
+    font-style: italic;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .top-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .top-controls button,
+    .top-controls select {
+        width: 100%;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .preview-image {
+        max-width: 120px;
+        max-height: 120px;
+    }
+}
