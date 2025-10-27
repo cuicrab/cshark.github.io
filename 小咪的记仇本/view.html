@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看记录 - 小咪的记仇本</title>
+    <link rel="stylesheet" href="view.css">
+</head>
+<body>
+    <!-- 装饰性小猫元素 -->
+    <div class="cat-decoration decoration-1">🐱</div>
+    <div class="cat-decoration decoration-2">🐟</div>
+    <div class="cat-decoration decoration-3">🐱</div>
+    <div class="cat-decoration decoration-4">🐟</div>
+    
+    <div class="top-controls">
+        <button id="export-btn">导出CSV</button>
+        <button id="import-btn">导入CSV</button>
+        <input type="file" id="import-input" accept=".csv" style="display: none;">
+        <select id="theme-select">
+            <option value="pink">樱花粉</option>
+            <option value="yellow">柠檬黄</option>
+            <option value="green">薄荷绿</option>
+            <option value="blue">晴日蓝</option>
+        </select>
+    </div>
+    <div class="container">
+        <h1>所有记录</h1>
+        
+        <div class="content-wrapper">
+            <!-- 左侧日历区域 -->
+            <div class="calendar-section">
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button id="prev-month" class="calendar-nav">‹</button>
+                        <h3 id="current-month" class="calendar-title"></h3>
+                        <button id="next-month" class="calendar-nav">›</button>
+                    </div>
+                    
+                    <div class="calendar-weekdays">
+                        <div class="weekday">日</div>
+                        <div class="weekday">一</div>
+                        <div class="weekday">二</div>
+                        <div class="weekday">三</div>
+                        <div class="weekday">四</div>
+                        <div class="weekday">五</div>
+                        <div class="weekday">六</div>
+                    </div>
+                    
+                    <div id="calendar-days" class="calendar-days"></div>
+                </div>
+                
+                <button id="back-btn" class="back-btn">🐱 返回主页面</button>
+            </div>
+            
+            <!-- 右侧记录列表 -->
+            <div class="records-section">
+                <div class="records-header">
+                    <h2 id="records-title">所有记录</h2>
+                    <div class="filter-info">
+                        <span id="date-filter"></span>
+                        <button id="clear-filter" class="clear-filter" style="display: none;">清除筛选</button>
+                    </div>
+                </div>
+                
+                <div id="records-list" class="records-list"></div>
+                
+                <div class="no-records" id="no-records" style="display: none;">
+                    <p>这一天没有记录</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="view.js"></script>
+</body>
+</html>
